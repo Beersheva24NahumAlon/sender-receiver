@@ -21,6 +21,7 @@ public class Receiver extends Thread {
                     System.out.println("%s received message: %s".formatted(getName(), msg));
                 } else {
                     messageBox.put(msg);
+                    sleep(10); //to get opportunity to another thread to take a message
                 }
             } catch (InterruptedException e) {
                 break;
