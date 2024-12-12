@@ -11,8 +11,8 @@ public class Main {
         Sender sender = new Sender(N_MESSAGES, messageBox, "Sender");
         Receiver[] receivers = new Receiver[N_RECEIVERS];
         for (int i = 0; i < N_RECEIVERS; i++) {
-        receivers[i] = new Receiver(messageBox, "Receiver #%d".formatted(i + 1));
-        receivers[i].start();
+            receivers[i] = new Receiver(messageBox, "Receiver #%d".formatted(i + 1));
+            receivers[i].start();
         }
         sender.start();
         sender.join();
