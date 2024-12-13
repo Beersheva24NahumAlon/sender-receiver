@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     private static final int N_RECEIVERS = 10;
-    private static final int N_MESSAGES = 20;
+    private static final int N_MESSAGES = 2000;
 
     public static void main(String[] args) throws InterruptedException {
         MessageBox messageBox = new SimpleMessageBox();
