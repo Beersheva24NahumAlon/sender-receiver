@@ -7,11 +7,13 @@ public class Main {
     private static final int N_MESSAGES = 2000;
 
     public static void main(String[] args) throws InterruptedException {
-        MessageBox messageBox = new SimpleMessageBox();
-        Sender sender = new Sender(N_MESSAGES, messageBox, "Sender");
+        MessageBox messageBoxEven = new SimpleMessageBox();
+        MessageBox messageBoxOdd = new SimpleMessageBox();
+        Sender sender = new Sender(N_MESSAGES, messageBoxEven, messageBoxOdd, "Sender");
         Receiver[] receivers = new Receiver[N_RECEIVERS];
         for (int i = 0; i < N_RECEIVERS; i++) {
-            receivers[i] = new Receiver(messageBox, "Receiver #%d".formatted(i + 1));
+            MessageBox currentMessageBox = (i + 1) % 2 == 0 ? messageBoxEven : messageBoxOdd;
+            receivers[i] = new Receiver(currentMessageBox, "Receiver #%d".formatted(i + 1));
             receivers[i].start();
         }
         sender.start();
